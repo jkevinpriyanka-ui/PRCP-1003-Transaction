@@ -13,9 +13,11 @@ uploaded_file = st.file_uploader("Upload CSV", type="csv")
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-    
-    expected_features = [f"VAR{i}" for i in range(1, 201)]
+
+    expected_features = [f"var_{i}" for i in range(0, 200)]  # match your CSV
     missing = [f for f in expected_features if f not in df.columns]
+
+    
     
     if missing:
         st.error(f"Missing features: {', '.join(missing)}")
